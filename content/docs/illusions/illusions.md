@@ -73,7 +73,7 @@ Sin los anillos internos y externos la ilusión desaparece, estos generan la sen
 | G | Quitar relleno |
 {{< /details >}}
 
-{{<p5-iframe ver="1.4.2" sketch="/workshops/sketches/spinning_ball.js" >}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/content/docs/sketches/spinning_ball.js" >}}
 
 ### ¿De que color es la bola?
 
@@ -88,4 +88,4 @@ Cuando quitamos el degradado de la imagen, vemos que en realidad la bola no camb
 | F | Revelar truco |
 {{< /details >}}
 
-{{<p5-iframe ver="1.4.2" sketch="/workshops/sketches/color_changing_ball.js" >}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/content/docs/sketches/color_changing_ball.js" >}}
