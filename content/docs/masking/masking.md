@@ -15,4 +15,4 @@ weight: 1
 | R | Resetear imagen |
 {{< /details >}}
 
-{{<p5-iframe ver="1.4.2" sketch="/showcase/content/docs/sketches/convolutions.js" >}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/convolutions.js" >}}
