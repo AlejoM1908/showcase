@@ -1,3 +1,7 @@
+---
+weight: 1
+---
+
 # Ilusiones
 
 ## Ilusiones Opticas
