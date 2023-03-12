@@ -38,7 +38,7 @@ RGB color mode is widely used in digital graphics, web design, and other digital
 
 ## Example
 
-{{< p5-global-iframe id="breath" width="600" height="600" >}}
+{{< p5-global-iframe id="breath" width="400" height="400" >}}
 let img;
 let img2;
 
@@ -119,8 +119,8 @@ function changeToRGB(){
 }
 
 function preload() {
-  img = loadImage("content/assets/image/howl's_casttle.jpg");
-  img2 = loadImage("content/assets/image/howl's_casttle.jpg");
+  img = loadImage("content/assets/image/howl's_casttle.jpeg");
+  img2 = loadImage("content/assets/image/howl's_casttle.jpeg");
 }
 
 function setup() {
