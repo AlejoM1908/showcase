@@ -1,5 +1,5 @@
 ---
-weight: 2
+weight: 1
 ---
 
 
@@ -39,7 +39,7 @@ RGB color mode is widely used in digital graphics, web design, and other digital
 ## Example
 
 
-{{<p5-iframe ver="1.4.2" sketch="content\sketches\colorMode V2.js" >}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/colorMode V2.js" >}}
 
 # References
 
