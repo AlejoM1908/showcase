@@ -119,8 +119,8 @@ function changeToRGB(){
 }
 
 function preload() {
-  img = loadImage("/workshops/assets/image/howl's_casttle.jpg");
-  img2 = loadImage("/workshops/assets/image/howl's_casttle.jpg");
+  img = loadImage("content/assets/image/howl's_casttle.jpg");
+  img2 = loadImage("content/assets/image/howl's_casttle.jpg");
 }
 
 function setup() {
