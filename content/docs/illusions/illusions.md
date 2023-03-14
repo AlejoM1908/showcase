@@ -91,4 +91,4 @@ La siguiente ilusión óptica entre en la categoría de las ilusiones fisiológi
 
 ## Escalones torcidos
 
-{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/stairs.js" width="600" height="324" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/stairs.js" width="600" height="350" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
