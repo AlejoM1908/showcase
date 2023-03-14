@@ -63,9 +63,9 @@ Sin los anillos internos y externos la ilusión desaparece, estos generan la sen
 | ---------------- | -------------- |
 | F                | Quitar anillos |
 | G                | Quitar relleno |
-| {{< /details >}} |                |
+{{< /details >}}
 
-{{`<p5-iframe ver="1.4.2" sketch="/showcase/sketches/spinning_ball.js" >`}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/spinning_ball.js" width="550" height="400" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
 ### ¿De que color es la bola?
 
@@ -80,15 +80,15 @@ La siguiente ilusión óptica entre en la categoría de las ilusiones fisiológi
 | Tecla            | Description   |
 | ---------------- | ------------- |
 | F                | Revelar truco |
-| {{< /details >}} |               |
+{{< /details >}}
 
-{{`<p5-iframe ver="1.4.2" sketch="/showcase/sketches/color_changing_ball.js" >`}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/color_changing_ball.js" width="600" height="400" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
 
 ## Efecto Cornsweet
 
-{{`<p5-iframe ver="1.4.2" sketch="/showcase/sketches/first_workshop/cornsweet.js" width="500" height="500" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">`}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/cornsweet.js" width="500" height="500" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
 ## Escalones torcidos
 
-{{`<p5-iframe ver="1.4.2" sketch="/showcase/sketches/first_workshop/stairs.js" width="600" height="324" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">`}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/stairs.js" width="600" height="324" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
