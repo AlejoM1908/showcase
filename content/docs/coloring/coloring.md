@@ -6,35 +6,36 @@ weight: 1
 
 # HSL Color Mode
 
-HSL color mode is a way of representing colors in terms of three properties: hue, saturation, and lightness. The HSL color model is based on the concept of a color wheel, where colors are arranged in a circle according to their hue. Hue is measured in degrees, with red at 0°, green at 120°, and blue at 240°, and all other hues arranged between these three primary colors.
+HSL Color Mode es una manera de representar colores en términos de tres propiedades: Matiz, saturación y luminosidad. El HSL Color Mode esta basado en el concepto de la rueda de color, donde los colores están organizados en un círculo de acuerdo con su matiz. El matiz es medido en grados, con rojo en 0°, verde en 120° y azul en 240° y todos los demás matices organizados entre los tres colores primarios.
 
-Saturation is a measure of how intense or pure a color is, and is expressed as a percentage from 0% (fully desaturated) to 100% (fully saturated). In HSL color mode, a fully saturated color has no white, gray, or black added to it, while a desaturated color has some degree of white, gray, or black added to it.
+La saturación es una medida de que tan intenso o puro un color es y es expresado como un porcentaje desde 0% (completamente desaturado) a 100% (completamente saturado). En el HSL Color Mode un color completamente saturado no tiene agregado ningún blanco, gris o negro mientras que un color desaturado tiene agregado alguna cantidad de blanco, gris o negro.
 
-Lightness refers to the brightness of a color, and is also expressed as a percentage from 0% (completely black) to 100% (completely white). In HSL color mode, lightness is distinct from saturation, meaning that a color can be both highly saturated and highly light (such as a bright, neon color), or highly desaturated and dark (such as a dark, muted color).
+La luminosidad se refiere a lo brillante que es un color y también se expresa como un porcentaje desde 0% (completamente negro) a 100% (completamente blanco). En HSL Color Mode la luminosidad es distinta de la saturación lo que permite que un color puede ser altamente saturado y altamente luminoso al mismo tiempo (como por ejemplo un color de neón brillante) o altamente desaturado y oscuro (como un color oscuro apagado).
 
-One of the advantages of using HSL color mode is that it allows for greater flexibility and control over color choices, since the hue, saturation, and lightness values can be adjusted independently of each other. For example, if you have a color that you like but want to make it lighter or darker, you can adjust the lightness value without changing the hue or saturation.
+Una de las ventajas de usar el HSL Color Mode es que permite una mayor flexibilidad y control sobre la elección de colores ya que los valores del matiz, la saturación y la luminosidad pueden ser ajustados independientemente el uno del otro. Por ejemplo, si hay un color que te guste, pero quieres hacerlo más claro u oscuro puedes ajustar los valores de luminosidad sin cambiar el matiz ni la saturación.
 
-Overall, HSL color mode is a powerful tool for working with color, whether you're designing graphics, creating artwork, or building a website. By understanding how the three properties of hue, saturation, and lightness work together, you can create a virtually unlimited range of colors and achieve the desired visual effect.
+En general HSL Color Mode es una poderosa herramienta para trabajar con color sin importar si estas diseñando gráficos, creando piezas de arte o construyendo un sitio web. Al entender como las tres propiedades matiz, saturación y luminosidad se relacionan entre sí puedes crear una cantidad casi ilimitada de colores y alcanzar el efecto visual deseado.
+
 
 # HSB Color Mode
-HSB color mode is another way of representing colors using three values: hue, saturation, and brightness. HSB stands for Hue, Saturation, and Brightness, and is also sometimes referred to as HSV (Hue, Saturation, Value).
+HSB Color Mode es otra manera de representar colores usando tres valores: Matiz, saturación y brillo. HSB significa Matiz, Saturación y Brillo por sus siglas en inglés (Hue, Saturation, and Brightness) y aveces también se le llama HSV (Hue, Saturation, Value).
 
-In HSB color mode, hue is still represented by a color wheel, where colors are arranged in a circle according to their hue angle. Hue is measured in degrees, with red at 0°, green at 120°, and blue at 240°, and all other hues arranged between these three primary colors.
+En HSB Color Mode el matiz todavía se representa por una rueda de color donde los colores son organizados en un círculo de acuerdo a su ángulo de matiz. El matiz es medido en grados, con rojo en 0°, verde en 120° y azul en 240° y todos los demás matices organizados entre los tres colores primarios.
 
-Saturation is again a measure of how intense or pure a color is, expressed as a percentage from 0% (fully desaturated) to 100% (fully saturated). In HSB color mode, a fully saturated color has no white or black added to it, while a desaturated color has some degree of white or black added to it.
+La saturación es de nuevo una medida de que tan intenso o puro un color es y es expresado como un porcentaje desde 0% (completamente desaturado) a 100% (completamente saturado). En el HSB Color Mode un color completamente saturado no tiene agregado ningún blanco, gris o negro mientras que un color desaturado tiene agregado alguna cantidad de blanco, gris o negro.
 
-The third property in HSB color mode is brightness, which represents the amount of light reflected by a color, also expressed as a percentage from 0% (black) to 100% (white). In HSB color mode, brightness is distinct from saturation, meaning that a color can be both highly saturated and highly bright (such as a bright, neon color), or highly desaturated and dark (such as a dark, muted color).
+La tercera propiedad en HSB Color Mode es el brillo que representa la cantidad de luz reflejada por un color, también se expresa como un porcentaje desde 0% (completamente negro) a 100% (completamente blanco). En HSB Color Mode la luminosidad es distinta de la saturación lo que permite que un color puede ser altamente saturado y con un brillo intenso al mismo tiempo o altamente desaturado y oscuro.
 
-One advantage of using HSB color mode is that it can be more intuitive for many users, as it corresponds more closely to the way that people perceive and describe color. For example, when we talk about a "bright" or "dark" color, we're referring to the brightness property of the color, which is more directly represented in HSB color mode.
+Una ventaja de usar HSB Color Mode es que puede ser mas intuitivo para muchos usuarios ya que corresponde mas cercanamente a la manera como la gente percibe y describe el color. Por ejemplo, cuando hablamos de un color “brillante” u “oscuro” nos referimos al brillo del color que se representa de manera más directa en el HSB Color Mode.
 
-Overall, HSB color mode is a powerful tool for working with color, whether you're designing graphics, creating artwork, or building a website. By understanding how the three properties of hue, saturation, and brightness work together, you can create a virtually unlimited range of colors and achieve the desired visual effect.
 
 # RGB Color Mode
-RGB color mode is a way of representing colors on digital devices such as computer monitors, televisions, and mobile devices. RGB stands for Red, Green, and Blue, the primary colors of light that are combined to create other colors in this mode.
+RGB Color Mode es una manera de representar colores en dispositivos digitales como monitores, televisores y dispositivos móviles. RGB significa rojo, verde y azul por sus siglas en inglés (Red, Green, and Blue) los colores primarios de la luz que se combinan para crear los otros colores en este modo.
 
-In RGB color mode, each color is represented by a combination of three values that represent the intensity of red, green, and blue light required to create the color. These values are typically expressed as numbers ranging from 0 to 255, where 0 represents no intensity and 255 represents full intensity.
+En el RGB Color Mode cada color es representado por una combinación de tres valores que representan la intensidad de rojo, verde y azul requerida para crear el color. Estos valores están típicamente expresados como números del 0 al 255 donde 0 representa una intensidad nula y 255 una completa intensidad.
 
-RGB color mode is widely used in digital graphics, web design, and other digital applications. It is a powerful tool for creating a wide range of colors and achieving precise color matching, but it has some limitations, such as the fact that it may not accurately represent the colors of printed materials, which typically use a different color mode.
+RGB Color Mode es usado ampliamente en diseño digital, diseño web y otras aplicaciones digitales. Es una poderosa herramienta para crear un amplio rango de colores y lograr un ajuste preciso de color, pero tiene sus limitaciones como el hecho de que puede no representar de manera exacta los colored de materiales impresos que usualmente usan un diferente modo de color.
+
 
 ## Example
 
