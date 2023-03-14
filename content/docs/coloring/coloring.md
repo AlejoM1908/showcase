@@ -38,7 +38,7 @@ RGB color mode is widely used in digital graphics, web design, and other digital
 
 ## Example
 
-{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/colorMode V2.js" width="600" height="800" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/coloring.js" width="600" height="800" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
 # References
 
