@@ -8,10 +8,11 @@ Perlin Noise is used here to represent the "natural" change in incerted triangle
 
 # Perlin Noise
 
-Perlin noise is a type of procedural noise function, which means it generates random values in a way that appears natural and organic. It was invented by Ken Perlin in 1983 for use in computer graphics.
+Perlin Noise es un tipo de función de ruido procedimental, lo que significa que genera valores aleatorios de forma que parezcan naturales y orgánicos. Fue inventado por Ken Perlin en 1983 para su uso en gráficos por ordenador.
 
-Perlin noise generates a grid of values, where each point on the grid has a random value assigned to it. These values are then interpolated between neighboring points to create a smooth, continuous distribution of values across the grid. The result is a set of values that appear to vary in a natural and coherent way.
+Perlin Noise genera una cuadrícula de valores, en la que cada punto de la cuadrícula tiene asignado un valor aleatorio. A continuación, estos valores se interpolan entre puntos vecinos para crear una distribución suave y continua de valores en toda la cuadrícula. El resultado es un conjunto de valores que parecen variar de forma natural y coherente.
 
+Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
 ## Example
 
 {{< p5-global-iframe id="breath" width="600" height="600" >}}
