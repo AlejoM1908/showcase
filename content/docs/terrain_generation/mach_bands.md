@@ -12,7 +12,6 @@ Perlin Noise es un tipo de función de ruido procedimental, lo que significa que
 
 Perlin Noise genera una cuadrícula de valores, en la que cada punto de la cuadrícula tiene asignado un valor aleatorio. A continuación, estos valores se interpolan entre puntos vecinos para crear una distribución suave y continua de valores en toda la cuadrícula. El resultado es un conjunto de valores que parecen variar de forma natural y coherente.
 
-Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
 ## Example
 
 {{< p5-global-iframe id="breath" width="600" height="600" >}}
