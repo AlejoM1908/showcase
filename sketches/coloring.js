@@ -186,8 +186,8 @@ function originalImage(){
 }
 
 function preload() {
-  img = loadImage("/showcase/content/assets/image/iceland.jpeg");
-  img2 = loadImage("/showcase/content/assets/image/iceland.jpeg");
+  img = loadImage('/showcase/assets/image/hero.jpeg');
+  img2 = loadImage('/showcase/assets/image/hero.jpeg');
 }
 
 function setup() {
