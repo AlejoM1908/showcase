@@ -16,4 +16,4 @@ bookToc: false
 | R                | Resetear imagen    |
 {{< /details >}}
 
-{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/masking.js" width="600" height="800" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/masking.js" width="600" height="880" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
