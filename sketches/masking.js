@@ -2,13 +2,13 @@
 let masks = [
   ['Original', [0, 0, 0, 0, 1, 0, 0, 0, 0]],
   ['Desenfoque Gausiano', [1 / 16, 1 / 8, 1 / 16, 1 / 8, 1 / 4, 1 / 8, 1 / 16, 1 / 8, 1 / 16]],
-  ['Detección de bordes', [1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9]],
-  ['Desenfoque de caja', [-1, -1, -1, -1, 8, -1, -1, -1, -1]],
+  ['Detección de bordes', [-1, -1, -1, -1, 8, -1, -1, -1, -1]],
+  ['Desenfoque de caja', [1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9]],
   ['Detección horizontal', [-3, 0, 3, -10, 0, 10, -3, 0, 3]],
   ['Agudeza', [0, -1, 0, -1, 5, -1, 0, -1, 0]],
   ['Detección vertical', [-3, -10, -3, 0, 0, 0, 3, 10, 3]],
   ['Operador de Sobel', [-1, -2, -1, 0, 0, 0, 1, 2, 1]],
-  ['Personalizado', [0, 0, 0, 0, 1, 0, 0, 0, 0]]
+  //['Personalizado', [0, 0, 0, 0, 1, 0, 0, 0, 0]]
 ];
 
 // Adding an array of images so new ones can be added in excecution time
@@ -23,18 +23,19 @@ let loaded_images = [];
 let current_image;
 
 // Defining the required global variables for selected image, kernel and histogram
-let show_histogram = false;
-let histogram_changed = false;
-let mask_changed = false;
+let show_histogram = true;
+let histogram_changed = true;
+let mask_changed = true;
 let local_mode = false;
 let selected_mask = 0;
 let selected_image = 0;
-let selected_histogram = 0;
+let selected_histogram = 4;
 let brightness = 0;
 
 // Defining other global variables
 const CANVAS_SIZE = 600;
 const HISTOGRAM_HEIGHT = 200;
+const LOCAL_ZONE_SIZE = 100;
 let FONT;
 let mask_title;
 let histogram_title;
@@ -67,6 +68,9 @@ function setup() {
   masking_canvas = createGraphics(CANVAS_SIZE, CANVAS_SIZE);
   masking_canvas.position(0, 0);
   masking_canvas.pixelDensity(1);
+  let input_file = createFileInput(handleFile);
+  input_file.position(10, CANVAS_SIZE + HISTOGRAM_HEIGHT + 30);
+
   
   // Create the histogram canvas
   histogram_canvas = createGraphics(CANVAS_SIZE, HISTOGRAM_HEIGHT);
@@ -76,12 +80,13 @@ function setup() {
   for (let i = 0; i < loaded_images.length; i++) {
     // Resize the image to the CANVAS_SIZE
     loaded_images[i].resize(CANVAS_SIZE, CANVAS_SIZE);
+    loaded_images[i].loadPixels();
   }
   
   // Set the current image to the first one in the loaded_images array
-  current_image = loaded_images[selected_image];
-  current_image.loadPixels();
-  mask_title = masks[selected_mask][0];
+  resetImage();
+
+  mask_title = local_mode ? masks[selected_mask][0] + ' - local': masks[selected_mask][0] + ' - global';
 }
 
 /**
@@ -94,7 +99,6 @@ function draw() {
   if (mask_changed) {
     // Check to apply the mask locally or globally
     local_mode ? applyLocalMask() : applyGlobalMask();
-    mask_title = masks[selected_mask][0];
 
     // Reset the flags
     mask_changed = false;
@@ -120,13 +124,25 @@ function draw() {
  * Used to reload the original selected image, if the mask is not applied locally, then return the selected mask to the original one
 */
 function clearMask() {
-  current_image = loaded_images[selected_image];
+  resetImage();
 
   // If global mode, reset the mask to the original one
   if (!local_mode) {
     selected_mask = 0;
-    mask_title = masks[selected_mask][0];
   }
+
+  mask_title = local_mode ? masks[selected_mask][0] + ' - local': masks[selected_mask][0] + ' - global';
+}
+
+/**
+ * Used to copy the selected image to the current image as a ImageData object
+*/
+function resetImage() {
+  current_image = createImage(CANVAS_SIZE, CANVAS_SIZE);
+  current_image.copy(loaded_images[selected_image], 0, 0, CANVAS_SIZE, CANVAS_SIZE, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+  current_image.loadPixels();
+
+  histogram_changed = true;
 }
 
 /**
@@ -154,7 +170,6 @@ function displayName(title, canvas) {
   canvas.text(title, 5, 20);
 
   canvas.pop();
-
 }
 
 /**
@@ -197,7 +212,7 @@ function calculateHistograms() {
 }
 
 /**
- * Used to scale down the histograms to fit the histogram canvas
+ * Used to scale down the histograms to fit the histogram canvas width and height
 */
 function scaleDownHistograms() {
   // Iterate over the histograms and scale them down
@@ -221,29 +236,29 @@ function scaleDownHistograms() {
  *     - All of the last 4 histograms
 */
 function drawHistogram() {
-  histogram_canvas.background(150);
+  histogram_canvas.background(220);
   histogram_canvas.stroke(255);
   histogram_canvas.strokeWeight(1);
   let name;
 
   // Draw the histogram for the average of the three color channels
   if (selected_histogram == 0 || selected_histogram == 4) {
-    printHistogramArray(histograms[0], color(255, 255, 255, 50));
+    printHistogramArray(histograms[0], color(90, 90, 90, 70));
     selected_histogram != 4 ? name = "Average" : name = "Mixed";
   }
   // Draw the histogram for the red channel
   if (selected_histogram == 1 || selected_histogram == 4) {
-    printHistogramArray(histograms[1], color(255, 0, 0, 50));
+    printHistogramArray(histograms[1], color(255, 0, 0, 70));
     selected_histogram != 4 ? name = "Red" : name;
   }
   // Draw the histogram for the green channel
   if (selected_histogram == 2 || selected_histogram == 4) {
-    printHistogramArray(histograms[2], color(0, 255, 0, 50));
+    printHistogramArray(histograms[2], color(0, 255, 0, 70));
     selected_histogram != 4 ? name = "Green" : name;
   }
   // Draw the histogram for the blue channel
   if (selected_histogram == 3 || selected_histogram == 4) {
-    printHistogramArray(histograms[3], color(0, 0, 255, 50));
+    printHistogramArray(histograms[3], color(0, 0, 255, 70));
     selected_histogram != 4 ? name = "Blue" : name;
   }
 
@@ -253,14 +268,22 @@ function drawHistogram() {
 }
 
 /**
- * Used to draw the histogram on the histogram canvas
+ * Used to draw the histogram on the histogram canvas using all the  available histogram canvas width
+ * The histogram must appear as a continuous line, so when separation i required between the histogram lines, new bars with the average length of the two columns are drawn
  * @param {Array} histogram - The histogram to be drawn
  * @param {string} color - The color of the histogram
  */
 function printHistogramArray(histogram, color) {
+  histogram_canvas.push();
   histogram_canvas.stroke(color);
-  for (let i = 0; i < histogram.length; i++) {
-    histogram_canvas.line(i, histogram_canvas.height, i, histogram_canvas.height - histogram[i]);
+  histogram_canvas.strokeWeight(1);
+
+  // Draw the histogram in the complete histogram canvas size getting the average of the two columns
+  for (let i = 0; i < histogram_canvas.width; i++) {
+    let index = Math.floor(i * histogram.length / histogram_canvas.width);
+    let height = histogram[index];
+
+    histogram_canvas.line(i, histogram_canvas.height, i, histogram_canvas.height - height);
   }
 }
 
@@ -281,60 +304,62 @@ function getPixel(pixelX, pixelY) {
 }
 
 /**
- * Used to set the pixel value of the current image at a given location
- * @param {number} pixelX - The column where the pixel is located
- * @param {number} pixelY - The row where the pixel is located
- * @param {object} pixel - The pixel value to be set in [r, g, b] format
-*/
-function setPixel(pixelX, pixelY, pixel) {
-  let index = (pixelX + pixelY * masking_canvas.width) * 4;
-
-  current_image.pixels[index] = pixel[0];
-  current_image.pixels[index + 1] = pixel[1];
-  current_image.pixels[index + 2] = pixel[2];
-}
-
-/**
  * Used to apply a mask globally to the current image
 */
 function applyGlobalMask() {
-  // Iterate over the pixels of the current image
-  for (let i = 0; i < masking_canvas.width; i++) {
-    for (let j = 0; j < masking_canvas.height; j++) {
-      applyMask(i, j);
-    }
-  }
+  if (selected_mask > 0) convolveImage(current_image);
 }
 
 function applyLocalMask() {
-  applyMask(mouseX, mouseY);
+  if (selected_mask == 0) return;
+
+  let posX = mouseX - LOCAL_ZONE_SIZE / 2;
+  let posY = mouseY - LOCAL_ZONE_SIZE / 2;
+
+  let small_image = createImage(LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE);
+  small_image.copy(current_image, posX, posY, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE, 0, 0, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE);
+  small_image.loadPixels();
+
+  convolveImage(small_image);
+
+  current_image.copy(small_image, 0, 0, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE, posX, posY, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE);
 }
 
-/**
- * Used to apply a mask to a specific pixel of the current image
- * @param {number} posX - The column where the pixel is located
- * @param {number} posY - The row where the pixel is located
-*/
-function applyMask(posX, posY) {
-  // Get the 3x3 zone around the pixel and apply the mask
+function getConvolution(image, pixelX, pixelY) {
+  let r = 0.0;
+  let g = 0.0;
+  let b = 0.0;
+
   for (let i = 0; i < 9; i++) {
-      let x = posX + (i % 3) - 1;
-      let y = posY + floor(i / 3) - 1;
+      let location = (pixelX + floor(i / 3) + image.width * (pixelY + i % 3)) * 4;
 
-      // Check if the pixel is inside the image
-      if (x >= 0 && x < masking_canvas.width && y >= 0 && y < masking_canvas.height) {
-        let pixel = getPixel(x, y);
-
-        // Apply the mask
-        pixel[0] = pixel[0] * masks[selected_mask][i];
-        pixel[1] = pixel[1] * masks[selected_mask][i];
-        pixel[2] = pixel[2] * masks[selected_mask][i];
-
-        setPixel(x, y, pixel);
-    }
+      r += image.pixels[location] * masks[selected_mask][1][i];
+      g += image.pixels[location + 1] * masks[selected_mask][1][i];
+      b += image.pixels[location + 2] * masks[selected_mask][1][i];
   }
 
-  current_image.updatePixels();
+  return {
+      r: constrain(r, 0, 255),
+      g: constrain(g, 0, 255),
+      b: constrain(b, 0, 255),
+  };
+}
+
+function convolveImage(image) {
+  for (let posX = 1; posX < image.width - 1; posX++) {
+      for (let posY = 1; posY < image.height - 1; posY++) {
+          let operatedPixel = getConvolution(image, posX, posY);
+          let position = (posX + posY * image.width) * 4;
+
+          image.pixels[position] = operatedPixel.r;
+          image.pixels[position + 1] = operatedPixel.g;
+          image.pixels[position + 2] = operatedPixel.b;
+          image.pixels[position + 3] = 255;
+      }
+  }
+
+  stroke(300, 100, 80);
+  image.updatePixels();
 }
 
 /**
@@ -343,11 +368,13 @@ function applyMask(posX, posY) {
 function handleFile(file) {
   if (file.type === 'image') {
     // get the new image, resize to the masking canvas size and push front to the ORIGINAL_IMAGES array
-    let img = createImg(file.data, '');
-    img.hide();
-    img.resize(masking_canvas.width, masking_canvas.height);
-    ORIGINAL_IMAGES.unshift(img);
-    selected_image = 0;
+    let img = loadImage(file.data, () => {
+      img.resize(width, height); // resize the image to the size of the canvas
+      loaded_images.unshift(img);
+      selected_image = 0;
+
+      resetImage();
+    });
   }
   else {
     alert('Solo se permiten imágenes');
@@ -362,10 +389,14 @@ function switchMask() {
 
   if (selected_mask >= masks.length) {
     selected_mask = 0;
-    clearMask();
+  }
+  
+  if (!local_mode) {
+    mask_changed = true;
+    resetImage();
   }
 
-  mask_changed = true;
+  mask_title = local_mode ? masks[selected_mask][0] + ' - local': masks[selected_mask][0] + ' - global';
 }
 
 function controlBrightness(increment = true) {
@@ -385,8 +416,6 @@ function switchImage() {
     selected_image = 0;
   }
 
-  current_image = loaded_images[selected_image];
-  current_image.loadPixels();
   clearMask();
 }
 
@@ -411,6 +440,8 @@ function switchHistogram() {
   if (selected_histogram >= 5) {
     selected_histogram = 0;
   }
+
+  histogram_changed = true;
 }
 
 function mousePressed() {
@@ -433,6 +464,7 @@ function keyPressed() {
       break;
   case 'h':
       switchImage();
+      histogram_changed = true;
       break;
   case 'j':
       switchHistogram();
