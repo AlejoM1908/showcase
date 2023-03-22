@@ -15,5 +15,5 @@ I'm a Systems engenering student at Universidad Nacional de Colombia, I'm from B
 **Hobbies**
 - Tennis
 - Guitar/Piano
-- Overthing stuff
+- Overthink stuff
 - Music
