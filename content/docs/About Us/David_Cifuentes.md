@@ -6,7 +6,7 @@ weight: 2
 
 I'm a Systems engenering student at Universidad Nacional de Colombia, I'm from Bogota-Colombia and I'm currently coursing the sixth semester of the carrer 
 
-**My carrer development road**
+**My carrer development aspirations**
 - Data Science
 - AI
 - Project Management
