@@ -28,6 +28,8 @@ The result would be a height map that you could use to create the terrain. For e
 
 ### Code explanation
 
+Here you'll have the step by steo of the most important parts of the code development 
+
 {{< details "Code">}}
 {{< \tabs >}}
 {{< tab "Creating the core of the example" >}}
