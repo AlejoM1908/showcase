@@ -63,6 +63,32 @@ fill(r,g,b);
 ```
 
 Here we create the Triangles that will be the surface of the terrain, we set the position of the vertex according to some coordinates and the terrain matrix
+{{< /tab >}}
+
+{{< tab "Adding Color and speed, noise change" >}}
+```js
+function updater(){
+    r = this.value();
+}
+
+function updateg(){
+    g = this.value();
+}
+
+function updateb(){
+    b = this.value();
+}
+
+function updateTerrainSpeed(){
+    terrainSpeed = this.value()/10;
+}
+
+function updateTerrainNoise(){
+    terrainNoise = this.value();
+}
+```
+
+here we create 5 sliders that allow us to interact with the terrain, we have:
 
 {{< /tab >}}
 {{< /tabs >}}
