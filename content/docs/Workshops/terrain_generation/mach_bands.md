@@ -20,7 +20,7 @@ To generate the height map, you would start by creating a grid of random vectors
 
 The result would be a height map that you could use to create the terrain. For example, you could use the height values to place objects like rocks and trees on the terrain, or to calculate the flow of water and other fluids.
 
-![imagen Terreno Generado con Perlin noise](/showcase/assets/image/Fractal_terrain_texture.jpg "imagen Terreno Generado con Perlin noise" =1000x800)
+![imagen Terreno Generado con Perlin noise](/showcase/assets/image/Fractal_terrain_texture.jpg "imagen Terreno Generado con Perlin noise")
 
 ## Example
 
