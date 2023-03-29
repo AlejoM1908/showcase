@@ -30,7 +30,6 @@ let local_mode = false;
 let selected_mask = 0;
 let selected_image = 0;
 let selected_histogram = 4;
-let brightness = 0;
 
 // Defining other global variables
 const CANVAS_SIZE = 600;
@@ -275,6 +274,7 @@ function drawHistogram() {
  */
 function printHistogramArray(histogram, color) {
   histogram_canvas.push();
+  colorMode(RGB, 255, 255, 255);
   histogram_canvas.stroke(color);
   histogram_canvas.strokeWeight(1);
 
@@ -399,12 +399,39 @@ function switchMask() {
   mask_title = local_mode ? masks[selected_mask][0] + ' - local': masks[selected_mask][0] + ' - global';
 }
 
-function controlBrightness(increment = true) {
-  increment ? brightness++ : brightness--;
+/**
+ * Used to operate the brightness of the current image
+ * @param {number} value - The value to be added to the current image
+*/
+function operateBrightness(value) {
+  current_image.loadPixels();
+  let [r, g, b] = [0, 0, 0];
 
-  current_image.filter('brightness', brightness);
+  for (let i = 0; i < current_image.pixels.length; i += 4) {
+    [r, g, b] = [current_image.pixels[i], current_image.pixels[i + 1], current_image.pixels[i + 2]];
+
+    current_image.pixels[i] = constrain(r + value, 0, 255);
+    current_image.pixels[i + 1] = constrain(g + value, 0, 255);
+    current_image.pixels[i + 2] = constrain(b + value, 0, 255);
+  }
+
+  current_image.updatePixels();
 }
-  
+
+/**
+ * Used to increase or decrease the brightness of the current image
+ * @param {boolean} increment - True to increase the brightness, false to decrease it
+*/
+function controlBrightness(increment = true) {
+  if (increment) {
+    operateBrightness(5);
+  }
+  else{
+    operateBrightness(-5);
+  }
+
+  histogram_changed = true;
+}
 
 /**
  * Used to switch between images in the image array
