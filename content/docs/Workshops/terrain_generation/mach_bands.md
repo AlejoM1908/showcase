@@ -28,7 +28,95 @@ The result would be a height map that you could use to create the terrain. For e
 
 ### Code explanation
 
-udDUHEUDNUIDUBDUNEDUNHU
+{{< details "Code">}}
+{{< \tabs >}}
+{{< tab "Creating the core of the example" >}}
+```js
+function setup() {
+  createCanvas(600, 600, WEBGL);
+  cols = w / scl;
+  rows = h / scl;
+
+  for (let x = 0; x < cols; x++) {
+    terrain[x] = [];
+    for (let y = 0; y < rows; y++) {
+      terrain[x][y] = 0; 
+    }
+  }
+}
+```
+Here we have one of the mos important things that you have to do; a matrix, with this matrix you'll be able to modify every point position according whit the perlin noise and the map function
+
+{{< /tab >}}
+{{< tab "Creating the "Perlin Noise effect" >}}
+```js
+function draw() {
+  flying -= terrainSpeed;
+  let yoff = flying;
+  for (let y = 0; y < rows; y++) {
+    let xoff = 0;
+    for (let x = 0; x < cols; x++) {
+      terrain[x][y] = map(noise(xoff, yoff), 0, 1, -terrainNoise, terrainNoise);
+      xoff += 0.2;
+    }
+    yoff += 0.2;
+  }
+
+}
+```
+Here we use the terrain matrix to set a specific position using the perling noise, also here is where we modify the change of the terrain movement and the noise
+
+{{< /tab >}}
+{{< tab "Creating the Triangles" >}}
+```js
+fill(r,g,b);
+  translate(-w / 2, -h / 2);
+  for (let y = 0; y < rows - 1; y++) {
+    beginShape(TRIANGLE_STRIP);
+    for (let x = 0; x < cols; x++) {
+      vertex(x * scl, y * scl, terrain[x][y]);
+      vertex(x * scl, (y + 1) * scl, terrain[x][y + 1]);
+    }
+    endShape();
+  }
+```
+
+Here we create the Triangles that will be the surface of the terrain, we set the position of the vertex according to some coordinates and the terrain matrix 
+
+{{< /tab >}}
+{{< tab "Adding Color and speed, noise change" >}}
+```js
+function updater(){
+    r = this.value();
+}
+
+function updateg(){
+    g = this.value();
+}
+
+function updateb(){
+    b = this.value();
+}
+
+function updateTerrainSpeed(){
+    terrainSpeed = this.value()/10;
+}
+
+function updateTerrainNoise(){
+    terrainNoise = this.value();
+}
+```
+
+here we create 5 sliders that allow us to interact with the terrain, we have:
+- One for R, RGB channel 
+- One for G, RGB channel
+- One for B, RGB channel
+- One for Speed change of the terrain surface
+- One for Noise change if the terrain surface
+{{< /tab >}}
+{{< /tabs >}}
+{{< /details >}}
+
 
 #### References
 
