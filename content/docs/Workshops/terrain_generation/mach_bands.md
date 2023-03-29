@@ -28,6 +28,8 @@ The result would be a height map that you could use to create the terrain. For e
 
 ### Code explanation
 
+hola po
+
 {{< details "Code">}}
 {{< \tabs >}}
 {{< tab "Creating the core of the example" >}}
@@ -116,6 +118,7 @@ here we create 5 sliders that allow us to interact with the terrain, we have:
 {{< /tab >}}
 {{< /tabs >}}
 {{< /details >}}
+
 #### References
 
 K. Perlin, "An image synthesizer," in Proceedings of the 12th Annual Conference on Computer Graphics and Interactive Techniques, vol. 19, no. 3, 1985, pp. 287-296, doi: 10.1145/325165.325247.
