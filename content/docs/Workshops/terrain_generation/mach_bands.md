@@ -46,6 +46,15 @@ function setup() {
     }
   }
 }
+let yoff = flying;
+  for (let y = 0; y < rows; y++) {
+    let xoff = 0;
+    for (let x = 0; x < cols; x++) {
+      terrain[x][y] = map(noise(xoff, yoff), 0, 1, -terrainNoise, terrainNoise);
+      xoff += 0.2;
+    }
+    yoff += 0.2;
+  }
 ```
 Here we have one of the most important things that you have to do; a matrix, with this matrix you'll be able to modify every point position according whit the perlin noise and the map function
 {{< /tab >}}
