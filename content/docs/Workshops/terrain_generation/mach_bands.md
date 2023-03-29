@@ -13,9 +13,20 @@ Perlin Noise is a type of procedural noise function, meaning that it generates r
 
 Perlin Noise generates a grid of values, where each grid point is assigned a random value. These values are then interpolated between neighboring points to create a smooth, continuous distribution of values across the grid. The result is a set of values that appear to vary naturally and consistently.
 
+
+It is frequently used in video games to make procedurally generated terrain that looks natural; In a game or simulation, you might want to generate a large terrain with mountains, valleys, and other features that appear natural and realistic. One way to do this is to use Perlin noise to generate a height map, which is a grayscale image where each pixel represents the height of the terrain at that point.
+
+To generate the height map, you would start by creating a grid of random vectors, as I mentioned earlier. You would then use a function to interpolate between these vectors, creating a smooth gradient field. Finally, you would sample this gradient field at regular intervals to create a grid of height values.
+
+The result would be a height map that you could use to create the terrain. For example, you could use the height values to place objects like rocks and trees on the terrain, or to calculate the flow of water and other fluids.
+
+![imagen Terreno Generado con Perlin noise](/showcase/assets/image/Fractal_terrain_texture.jpg)
+
 ## Example
 
 {{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/terrain_generator.js" width="600" height="600" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+
+
 
 # References
 
