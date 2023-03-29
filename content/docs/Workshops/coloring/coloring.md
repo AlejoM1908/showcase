@@ -8,7 +8,7 @@ HSL stands for Hue, Saturation, Lightness, and it's a color model used in digita
 
 Overall HSL Color Mode is a powerful tool for working with color whether you are designing graphics, creating artwork or building a website. By understanding how the three properties hue, saturation and lightness relate to each other you can create an almost unlimited amount of colors and achieve the desired visual effect.
 
-# HSB Color Mode
+# HSV Color Mode
 HSB stands for Hue, Saturation, and Brightness (or Value), and it defines color based on hue, saturation, and brightness, which is its overall lightness or darkness. In the HSB model, the brightness value determines how much white or black is mixed with the hue and saturation, making it useful for color manipulation and adjustment.
 
 An advantage of using HSB Color Mode is that it can be more intuitive for many users as it corresponds more closely to the way people perceive and describe color. For example, when we speak of a "bright" or "dark" color, we refer to the brightness of the color that is most directly represented in HSB Color Mode.
@@ -85,7 +85,7 @@ function rgbToHsl(r, g, b){
 Here we have to convert the RGB colorMode to HSL colorMode, we used some mathematic formulation to get a near aproximation, when we get an equivalent of the original RGB values, we just asign that values in  HSL to a new image to change the color of each pixel
 {{< /tab >}}
 
-{{< tab "Adding Color and speed, noise change" >}}
+{{< tab "Change to HSV" >}}
 ```js
 function rgbTohsv(r , g , b) {
 	// R, G, B values are divided by 255
@@ -148,6 +148,16 @@ The following example shows how to color a sphere using the HSB color model. The
 ## Example
 
 {{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/color_sphere.js" width="600" height="600" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+
+## Conclutions
+
+- RGB is the most widely used color model, and it is used in displays and computer graphics. It is an additive color model, where colors are created by adding red, green, and blue lights together.
+
+- HSB and HSV are similar color models, and they are used in some graphics applications, such as Adobe Photoshop. They are intuitive color models for artists and designers because they define colors in terms of hue, saturation, and brightness (or value).
+
+- Ultimately, the best way to choose colors is to experiment and see what looks good. There are no strict rules about which color model to use or how to choose colors. It depends on the application and personal preference.
+
+About the "Coloring a sphere with HSB color model" this code is does not have a good performance so we want to upgrade it and maybe present in future updates of the web page
 
 # References
 
