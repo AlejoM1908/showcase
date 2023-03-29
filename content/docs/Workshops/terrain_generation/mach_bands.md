@@ -46,7 +46,23 @@ function setup() {
 }
 ```
 Here we have one of the mos important things that you have to do; a matrix, with this matrix you'll be able to modify every point position according whit the perlin noise and the map function
+{{< /tab >}}
 
+{{< tab "Creating the Triangles" >}}
+```js
+fill(r,g,b);
+  translate(-w / 2, -h / 2);
+  for (let y = 0; y < rows - 1; y++) {
+    beginShape(TRIANGLE_STRIP);
+    for (let x = 0; x < cols; x++) {
+      vertex(x * scl, y * scl, terrain[x][y]);
+      vertex(x * scl, (y + 1) * scl, terrain[x][y + 1]);
+    }
+    endShape();
+  }
+```
+
+Here we create the Triangles that will be the surface of the terrain, we set the position of the vertex according to some coordinates and the terrain matrix
 
 {{< /tab >}}
 {{< /tabs >}}
