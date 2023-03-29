@@ -12,7 +12,7 @@ function setup() {
 }
 
 function draw() {
-    background(171, 0, 80);
+    background(280, 2, 50);
 
     drawCircle(strokeSize, cicleSize, [0, 270, 180, 60], 0, width / 4, height / 2);
     drawCircle(strokeSize, cicleSize, [0, 270, 180, 60], 1, width / 4 * 3, height / 2);

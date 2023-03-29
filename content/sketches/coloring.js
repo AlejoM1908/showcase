@@ -9,9 +9,6 @@ let rgbOriginalButton;
 
 //HSB section
 function rgbTohsv(r , g , b) {
-
-
-
 	// R, G, B values are divided by 255
 	// to change the range from 0..255 to 0..1
 	r = r / 255.0;
