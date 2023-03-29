@@ -28,7 +28,7 @@ The result would be a height map that you could use to create the terrain. For e
 
 ### Code explanation
 
-
+udDUHEUDNUIDUBDUNEDUNHU
 
 #### References
 
