@@ -90,7 +90,7 @@ function updateTerrainNoise(){
 }
 ```
 
-here we create 5 sliders that allow us to interact with the terrain, we have:
+here we create 5 sliders that allow us to interact with the terrain, we have
 One slider for R, RGB channel 
 One for G, RGB channel
 One for B, RGB channel
