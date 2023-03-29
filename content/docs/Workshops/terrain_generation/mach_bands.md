@@ -91,6 +91,11 @@ function updateTerrainNoise(){
 ```
 
 here we create 5 sliders that allow us to interact with the terrain, we have:
+- One for R, RGB channel 
+- One for G, RGB channel
+- One for B, RGB channel
+- One for Speed change of the terrain surface
+- One for Noise change if the terrain surface
 
 {{< /tab >}}
 {{< /tabs >}}
