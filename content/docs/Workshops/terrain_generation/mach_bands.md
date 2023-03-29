@@ -47,7 +47,7 @@ function setup() {
   }
 }
 ```
-Here we have one of the mos important things that you have to do; a matrix, with this matrix you'll be able to modify every point position according whit the perlin noise and the map function
+Here we have one of the most important things that you have to do; a matrix, with this matrix you'll be able to modify every point position according whit the perlin noise and the map function
 {{< /tab >}}
 
 {{< tab "Creating the Triangles" >}}
