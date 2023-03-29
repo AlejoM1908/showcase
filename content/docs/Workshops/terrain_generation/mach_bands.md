@@ -26,7 +26,7 @@ The result would be a height map that you could use to create the terrain. For e
 
 {{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/terrain_generator.js" width="600" height="600" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
-### Code explanation
+## Code explanation
 
 Here you'll have the step by steo of the most important parts of the code development 
 
@@ -96,7 +96,7 @@ here we create 5 sliders that allow us to interact with the terrain, we have: On
 {{< /tabs >}}
 {{< /details >}}
 
-#### Conclutions
+## Conclutions
 - Perlin noise is a powerful tool for generating natural-looking textures and terrain in computer graphics, simulation, and game development.
 - Perlin noise produces patterns that are both random and coherent, which makes them suitable for simulating natural phenomena like clouds, terrain, and water.
 - Perlin noise is computationally expensive, which means that it may not be suitable for all applications. However, there are techniques for optimizing the performance of Perlin noise, such as using simplified noise functions or precomputing gradients.
@@ -105,7 +105,7 @@ here we create 5 sliders that allow us to interact with the terrain, we have: On
 
 Perlin Noise is a great technique to generate wonderfull patterns, but is computationally expensive, so we hope to keep learning about it to be able to optimize the performance and maybe blend Perlin Noise with others techniques  
 
-##### References
+## References
 
 K. Perlin, "An image synthesizer," in Proceedings of the 12th Annual Conference on Computer Graphics and Interactive Techniques, vol. 19, no. 3, 1985, pp. 287-296, doi: 10.1145/325165.325247.
 
