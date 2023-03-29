@@ -13,6 +13,8 @@ HSB stands for Hue, Saturation, and Brightness (or Value), and it defines color 
 
 An advantage of using HSB Color Mode is that it can be more intuitive for many users as it corresponds more closely to the way people perceive and describe color. For example, when we speak of a "bright" or "dark" color, we refer to the brightness of the color that is most directly represented in HSB Color Mode.
 
+HSL is primarily used for color selection and design, while HSB is primarily used for color manipulation and adjustment.
+
 # RGB Color Mode
 RGB stands for Red, Green, Blue, and it's a color model used in digital devices to represent colors. It works by combining different levels of red, green, and blue light to produce a wide range of colors. In the RGB model, the absence of all colors is represented as black, while the presence of all colors at full intensity is represented as white. The RGB model is widely used in digital imaging, computer graphics, and display technologies, such as computer monitors, televisions, and projectors.
 
