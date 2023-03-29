@@ -90,19 +90,22 @@ function updateTerrainNoise(){
 }
 ```
 
-here we create 5 sliders that allow us to interact with the terrain, we have
-One slider for R, RGB channel 
-One for G, RGB channel
-One for B, RGB channel
-One for Speed change of the terrain surface
-One for Noise change if the terrain surface
+here we create 5 sliders that allow us to interact with the terrain, we have: One slider for R: RGB channel, One for G: RGB channel, One for B: RGB channel, One for Speed change of the terrain surface and One for Noise change if the terrain surface
 
 {{< /tab >}}
 {{< /tabs >}}
 {{< /details >}}
 
+#### Conclutions
+- Perlin noise is a powerful tool for generating natural-looking textures and terrain in computer graphics, simulation, and game development.
+- Perlin noise produces patterns that are both random and coherent, which makes them suitable for simulating natural phenomena like clouds, terrain, and water.
+- Perlin noise is computationally expensive, which means that it may not be suitable for all applications. However, there are techniques for optimizing the performance of Perlin noise, such as using simplified noise functions or precomputing gradients.
 
-#### References
+
+
+Perlin Noise is a great technique to generate wonderfull patterns, but is computationally expensive, so we hope to keep learning about it to be able to optimize the performance and maybe blend Perlin Noise with others techniques  
+
+##### References
 
 K. Perlin, "An image synthesizer," in Proceedings of the 12th Annual Conference on Computer Graphics and Interactive Techniques, vol. 19, no. 3, 1985, pp. 287-296, doi: 10.1145/325165.325247.
 
