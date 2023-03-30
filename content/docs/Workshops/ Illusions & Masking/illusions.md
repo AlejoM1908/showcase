@@ -258,3 +258,14 @@ function printSquares(color){
 {{< /tab >}}
 {{< /tabs >}}
 {{< /details >}}
+
+## Final thoughts
+As we was abble to see, illusions are a great way to learn about how the brain works, and how it can be tricked to see things that aren't real, and how we can use this knowledge to create amazing distortions in reality, and with this knowledge we can interpret differently the things that are harder to understand, and we can also use this knowledge to create amazing effects for artistics and scientific purposes.
+
+## References
+- [IndiaTimes.com](https://www.indiatimes.com/trending/wtf/optical-illusion-baseballs-same-colour-572258.html)
+- [Medium.com](https://medium.com/sketch-app-sources/can-you-believe-your-eyes-38ba29421426)
+- [MyVision.org](https://myvision.org/education/optical-illusions/)
+- [Corsweet Illusion](https://en.wikipedia.org/wiki/Cornsweet_illusion)
+- [Color induction](http://www.psy.ritsumei.ac.jp/~akitaoka/90901500585.pdf)
+- [IA - ChatGPT: Text generation only] (https://chat.openai.com/chat)

@@ -274,7 +274,6 @@ function drawHistogram() {
  */
 function printHistogramArray(histogram, color) {
   histogram_canvas.push();
-  colorMode(RGB, 255, 255, 255);
   histogram_canvas.stroke(color);
   histogram_canvas.strokeWeight(1);
 
@@ -310,6 +309,11 @@ function applyGlobalMask() {
   if (selected_mask > 0) convolveImage(current_image);
 }
 
+/**
+ * Used to apply a mask locally to the current image
+ * The local mask is applied to the area around the mouse cursor
+ * The size of the local mask is defined by the LOCAL_ZONE_SIZE constant
+*/
 function applyLocalMask() {
   if (selected_mask == 0) return;
 
@@ -325,6 +329,12 @@ function applyLocalMask() {
   current_image.copy(small_image, 0, 0, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE, posX, posY, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE);
 }
 
+/**
+ * Used to apply a convolution mask to an image
+ * @param {object} image - The image to which the convolution mask is applied
+ * @param {number} pixelX - The column where the pixel is located
+ * @param {number} pixelY - The row where the pixel is located
+*/
 function getConvolution(image, pixelX, pixelY) {
   let r = 0.0;
   let g = 0.0;
@@ -345,6 +355,10 @@ function getConvolution(image, pixelX, pixelY) {
   };
 }
 
+/**
+ * Used to apply a convolution mask to an image
+ * @param {object} image - The image to which the convolution mask is applied
+*/
 function convolveImage(image) {
   for (let posX = 1; posX < image.width - 1; posX++) {
       for (let posY = 1; posY < image.height - 1; posY++) {
@@ -471,6 +485,9 @@ function switchHistogram() {
   histogram_changed = true;
 }
 
+/**
+ * Used to clear the mask from the canvas
+*/
 function mousePressed() {
   if (local_mode) {
     mask_changed = true;
