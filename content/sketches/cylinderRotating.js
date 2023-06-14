@@ -3,7 +3,7 @@ let xoff = 0.0;
 let yoff = 0.0;
 
 function preload() {
-  bookShader = loadShader('cylinderRotating.vert', 'cylinderRotating.frag');
+  bookShader = loadShader('content/shaders/cylinderRotating.vert', 'content/shaders/cylinderRotating.frag');
 }
 
 function setup() {
