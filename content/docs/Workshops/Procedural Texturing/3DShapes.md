@@ -22,7 +22,7 @@ RGB Color Mode is widely used in digital design, web design and other digital ap
 
 ## Example
 
-{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/cylinderRotating.js" width="600" height="600" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/cylinderA.js" width="600" height="600" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
 ## Code explanation
 
