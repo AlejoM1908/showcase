@@ -147,7 +147,7 @@ The following example shows how to color a sphere using the HSB color model. The
 
 ## Example
 
-{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/color_sphere.js" width="600" height="600" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+
 
 
 ## Conclutions
