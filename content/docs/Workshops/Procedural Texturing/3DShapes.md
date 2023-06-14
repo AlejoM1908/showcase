@@ -26,6 +26,8 @@ RGB Color Mode is widely used in digital design, web design and other digital ap
 
 ## Code explanation
 
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/sphereImage.js" width="600" height="600" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+
 Here you'll have the step by step of the most important parts of the code development 
 
 {{< details "Code">}}
