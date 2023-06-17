@@ -37,12 +37,11 @@ function draw() {
   
   shader(theShader);
   
-  // passing cam as a texture
+  // passing the image as a texture
   theShader.setUniform('tex0', cam);
   theShader.setUniform('texSize', [cam.width, cam.height]);
   
 
-  // rect gives us some geometry on the screen
   rect(0,0,width,height);
   
 }
