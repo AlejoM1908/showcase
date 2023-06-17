@@ -10,16 +10,10 @@
 | 5                | Viggneta Effect    |
 
 {{< /details >}}
-
-
 {{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/post_effects.js" width="600" height="880" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
-
-
-
 Post-effect refers to any modifications or enhancements applied to an image after it has been captured or rendered. These effects are typically applied using image editing software or tools.
 
 Post-effects can be used to alter the overall appearance of an image, enhance certain aspects, or create specific artistic or stylistic effects. They allow photographers and designers to add creative touches, adjust colors, tones, contrast, or apply various filters and effects to achieve the desired look.
-
 
 ## Black and White
 
