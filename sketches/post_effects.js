@@ -19,7 +19,7 @@ function preload(){
   vineta = loadShader('cam.vert', 'vineta.frag');
   
   
-  cam = loadImage('iceland.jpg');
+  cam = loadImage('iceland2.jpg');
 }
 
 function setup() {
