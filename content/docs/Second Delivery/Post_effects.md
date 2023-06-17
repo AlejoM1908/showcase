@@ -1,3 +1,5 @@
+```javascript
+
 let theShader;
 
 let cams;
@@ -10,16 +12,16 @@ let vineta;
 
 function preload(){
   // load the shader and image
-  theShader = loadShader('cam.vert', 'blackwhite.frag');
-  cams = loadShader('cam.vert', 'cam.frag');
-  blackwhite = loadShader('cam.vert', 'blackwhite.frag');
-  blur = loadShader('cam.vert', 'blur.frag');
-  contraste = loadShader('cam.vert', 'contraste.frag');
-  sepia = loadShader('cam.vert', 'sepia.frag');
-  vineta = loadShader('cam.vert', 'vineta.frag');
+  theShader = loadShader('content/sketches/shaders/cam.vert', 'content/sketches/shaders/blackwhite.frag');
+  cams = loadShader('content/sketches/shaders/cam.vert', 'content/sketches/shaders/cam.frag');
+  blackwhite = loadShader('content/sketches/shaders/cam.vert', 'content/sketches/shaders/blackwhite.frag');
+  blur = loadShader('content/sketches/shaders/cam.vert', 'content/sketches/shaders/blur.frag');
+  contraste = loadShader('content/sketches/shaders/cam.vert', 'content/sketches/shaders/contraste.frag');
+  sepia = loadShader('content/sketches/shaders/cam.vert', 'content/sketches/shaders/sepia.frag');
+  vineta = loadShader('content/sketches/shaders/cam.vert', 'content/sketches/shaders/vineta.frag');
   
   
-  cam = loadImage('iceland2.jpg');
+  cam = loadImage('content/assets/image/iceland2.jpg');
 }
 
 function setup() {
@@ -63,3 +65,7 @@ function keyPressed() {
   }
 }
 
+
+
+
+```
