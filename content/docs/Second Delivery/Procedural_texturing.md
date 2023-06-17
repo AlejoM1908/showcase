@@ -4,4 +4,4 @@ Procedural texturing is a technique used in computer graphics to generate textur
 
 {{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/cylinderA.js" width="500" height="480" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
-{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/sphereImage.js" width="500" height="480" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/sphereImage.js" width="600" height="600" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
