@@ -5,7 +5,7 @@ let angX = 0;
 let angY = 0;
 
 function preload() {
-  sphereShader = loadShader('content/shaders/sphereImage.vert', 'content/shaders/sphereImage.frag');
+  sphereShader = loadShader('/showcase/sketches/shaders/sphereImage.vert', '/showcase/sketches/shaders/sphereImage.frag');
   textureImg = loadImage('/showcase/assets/image/sky.jpg');
 }
 

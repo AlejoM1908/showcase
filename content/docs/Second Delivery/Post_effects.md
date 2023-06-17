@@ -3,7 +3,7 @@
 {{< details "Special Keys">}}
 | Key              | Description        |
 | ---------------- | ------------------ |
-| 1                | Black and white     |
+| 1                | Black and white    |
 | 2                | Blur               |
 | 3                | Hight contrast     |
 | 4                | Sepia Effect       |

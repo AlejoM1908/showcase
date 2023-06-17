@@ -9,6 +9,7 @@ let vineta;
 
 
 function preload(){
+  // load the shader and image
   theShader = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/blackwhite.frag');
   cams = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/cam.frag');
   blackwhite = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/blackwhite.frag');
@@ -38,6 +39,7 @@ function draw() {
   theShader.setUniform('texSize', [cam.width, cam.height]);
   
 
+  // rect gives us some geometry on the screen
   rect(0,0,width,height);
   
 }
