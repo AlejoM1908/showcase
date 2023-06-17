@@ -1,4 +1,4 @@
-```javascript
+
 
 let theShader;
 
@@ -65,7 +65,3 @@ function keyPressed() {
   }
 }
 
-
-
-
-```
