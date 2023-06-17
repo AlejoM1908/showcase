@@ -23,7 +23,8 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  //createCanvas(windowWidth, windowHeight, WEBGL);
+  createCanvas(500, 480, WEBGL);
   noStroke();
   
   //cam = createCapture(VIDEO);
