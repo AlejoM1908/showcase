@@ -3,7 +3,7 @@ let xoff = 0.0;
 let yoff = 0.0;
 
 function preload() {
-  bookShader = loadShader('/sketches/shaders/cylinderA.vert', '/sketches/shaders/cylinderA.frag');
+  bookShader = loadShader('/showcase/sketches/shaders/cylinderA.vert', '/showcase/sketches/shaders/cylinderA.frag');
 }
 
 function setup() {
