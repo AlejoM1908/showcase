@@ -11,7 +11,7 @@ function preload() {
 
 function setup() {
   createCanvas(600, 600, WEBGL);
-  textureMode(NORMAL); // Asegurarse de que las coordenadas de textura sean de 0 a 1
+  textureMode(NORMAL); // normalize coords
 }
 
 function mouseDragged() {
@@ -25,9 +25,8 @@ function draw() {
   rotateX(angY);
   
   shader(sphereShader);
-  sphereShader.setUniform('uTexture', textureImg); // Pasar la textura al shader
+  sphereShader.setUniform('uTexture', textureImg); 
   
-  // Crear una esfera con un radio de 100 y 64 segmentos
   sphere(200, 100, 100);
   
   
