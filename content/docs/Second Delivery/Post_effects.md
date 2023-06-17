@@ -16,7 +16,7 @@
 {{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/post_effects.js" width="500" height="480" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
 
-post-effect refers to any modifications or enhancements applied to an image after it has been captured or rendered. These effects are typically applied using image editing software or tools.
+Post-effect refers to any modifications or enhancements applied to an image after it has been captured or rendered. These effects are typically applied using image editing software or tools.
 
 Post-effects can be used to alter the overall appearance of an image, enhance certain aspects, or create specific artistic or stylistic effects. They allow photographers and designers to add creative touches, adjust colors, tones, contrast, or apply various filters and effects to achieve the desired look.
 
@@ -24,15 +24,6 @@ Post-effects can be used to alter the overall appearance of an image, enhance ce
 ## Black and White
 
 The black and white filter works by converting a color image into a grayscale image, which means that each pixel in the resulting image will have a single intensity value representing the shade of gray.
-
-The process involves the following steps:
-
-- Load the original color image.
-- For each pixel in the image, calculate the grayscale value.
-- The grayscale value can be obtained by combining the color channels (red, green, and blue) of the pixel. There are different methods to calculate this value, such as averaging the color channels or using weighted averages to account for human perception of different colors.
-- Assign the calculated grayscale value to each color channel of the pixel in the resulting image.
-- Repeat this process for every pixel in the image.
-- Once all pixels have been processed, the resulting image will be in black and white.
 
 The grayscale values range from 0 (black) to 255 (white), representing the different shades of gray.
 The resulting image can be displayed or saved for further use. By removing the color information and representing the image in shades of gray, the black and white filter can highlight the tonal values, textures, and overall composition of the image.
