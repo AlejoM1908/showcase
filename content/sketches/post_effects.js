@@ -10,17 +10,18 @@ let vineta;
 
 function preload(){
   // load the shader and image
-  /*
-  theShader = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blackwhite.frag');
-  cams = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/cam.frag');
-  blackwhite = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blackwhite.frag');
-  blur = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blur.frag');
-  contraste = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/contraste.frag');
-  sepia = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/sepia.frag');
-  vineta = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/vineta.frag');
+  
+  theShader = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/blackwhite.frag');
+  cams = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/cam.frag');
+  blackwhite = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/blackwhite.frag');
+  blur = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/blur.frag');
+  contraste = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/contraste.frag');
+  sepia = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/sepia.frag');
+  vineta = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/vineta.frag');
 
-  cam = loadImage('showcase/assets/image/iceland2.jpg');
-  */
+  cam = loadImage('/showcase/assets/image/iceland2.jpg');
+  
+ /*
   theShader = loadShader('AlejoM1908/showcase/content/sketches/shaders/cam.vert', 'AlejoM1908/showcase/content/sketches/shaders/blackwhite.frag');
   cams = loadShader('AlejoM1908/showcase/content/sketches/shaders/cam.vert', 'AlejoM1908/showcase/content/sketches/shaders/cam.frag');
   blackwhite = loadShader('AlejoM1908/showcase/content/sketches/shaders/cam.vert', 'AlejoM1908/showcase/content/sketches/shaders/blackwhite.frag');
@@ -30,6 +31,7 @@ function preload(){
   vineta = loadShader('AlejoM1908/showcase/content/sketches/shaders/cam.vert', 'AlejoM1908/showcase/content/sketches/shaders/vineta.frag');
   
   cam = loadImage('AlejoM1908/showcase/content/assets/image/iceland2.jpg');
+  */
 }
 
 function setup() {

@@ -25,4 +25,3 @@ function draw() {
   rotateY(frameCount * 0.01);
   cylinder(100, 200);
 }
-content/sketches/shaders/cylinderA.frag
