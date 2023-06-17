@@ -27,10 +27,6 @@ function setup() {
   createCanvas(500, 480, WEBGL);
   noStroke();
   
-  //cam = createCapture(VIDEO);
-  //cam.size(windowWidth, windowHeight);
-  
-  //cam.hide();
 }
 
 function draw() {

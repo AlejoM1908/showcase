@@ -1,9 +1,9 @@
-## Post Effects
+# Post Effects
 
 {{< details "Special Keys">}}
 | Key              | Description        |
 | ---------------- | ------------------ |
-| 1                | Blak and white     |
+| 1                | Black and white     |
 | 2                | Blur               |
 | 3                | Hight contrast     |
 | 4                | Sepia Effect       |
@@ -13,73 +13,45 @@
 
 
 
-{{< p5-global-iframe id="test" width="525" height="525" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js">}}
-
-let theShader;
-
-let cams;
-let blackwhite;
-let blur;
-let contraste;
-let sepia;
-let vineta;
+{{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/post_effects.js" width="500" height="480" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 
 
-function preload(){
-  // load the shader and image
-  theShader = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blackwhite.frag');
-  cams = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/cam.frag');
-  blackwhite = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blackwhite.frag');
-  blur = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blur.frag');
-  contraste = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/contraste.frag');
-  sepia = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/sepia.frag');
-  vineta = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/vineta.frag');
-  
-  
-  cam = loadImage('showcase/assets/image/iceland2.jpg');
-}
+post-effect refers to any modifications or enhancements applied to an image after it has been captured or rendered. These effects are typically applied using image editing software or tools.
 
-function setup() {
-  //createCanvas(windowWidth, windowHeight, WEBGL);
-  createCanvas(500, 480, WEBGL);
-  noStroke();
-  
-  //cam = createCapture(VIDEO);
-  //cam.size(windowWidth, windowHeight);
-  
-  //cam.hide();
-}
-
-function draw() {
-  
-  shader(theShader);
-  
-  // passing the image as a texture
-  theShader.setUniform('tex0', cam);
-  theShader.setUniform('texSize', [cam.width, cam.height]);
-  
-
-  rect(0,0,width,height);
-  
-}
+Post-effects can be used to alter the overall appearance of an image, enhance certain aspects, or create specific artistic or stylistic effects. They allow photographers and designers to add creative touches, adjust colors, tones, contrast, or apply various filters and effects to achieve the desired look.
 
 
-function keyPressed() {
-  if (key === '1') {
-    theShader = blackwhite;
-  } else if (key === '2') {
-    theShader = blur;
-  } else if (key === '3') {
-    theShader = contraste;
-  } else if (key === '4') {
-    theShader = sepia;
-  }else if(key == '5'){
-    theShader = vineta;
-  }else if(key == '6'){
-    theShader = cams;
-  }
-}
+## Black and White
 
+The black and white filter works by converting a color image into a grayscale image, which means that each pixel in the resulting image will have a single intensity value representing the shade of gray.
 
+The process involves the following steps:
 
-{{< /p5-global-iframe >}}
+- Load the original color image.
+- For each pixel in the image, calculate the grayscale value.
+- The grayscale value can be obtained by combining the color channels (red, green, and blue) of the pixel. There are different methods to calculate this value, such as averaging the color channels or using weighted averages to account for human perception of different colors.
+- Assign the calculated grayscale value to each color channel of the pixel in the resulting image.
+- Repeat this process for every pixel in the image.
+- Once all pixels have been processed, the resulting image will be in black and white.
+
+The grayscale values range from 0 (black) to 255 (white), representing the different shades of gray.
+The resulting image can be displayed or saved for further use. By removing the color information and representing the image in shades of gray, the black and white filter can highlight the tonal values, textures, and overall composition of the image.
+
+## Blur 
+The blur effect, also known as Gaussian blur, is a common image filtering technique used to reduce image noise and create a smoother appearance by averaging the pixel values within a neighborhood. The blur effect helps to reduce high-frequency noise and remove fine details, resulting in a softer appearance. The amount of blur can be controlled by adjusting the kernel size or the standard deviation of the Gaussian distribution.
+
+## Hight contrast
+
+Contrast refers to the difference in brightness or color between the light and dark areas of an image. The contrast filter adjusts the range of tones in an image to make it appear more vibrant or dynamic. Increasing the contrast makes the bright areas of the image appear brighter and the dark areas appear darker, enhancing the overall separation between light and dark elements. This can make the image look more vivid and visually appealing.
+
+Decreasing the contrast reduces the difference between light and dark areas, resulting in a flatter and less vibrant image.
+
+It's important to note that extreme adjustments to contrast may lead to loss of detail or overexposure in bright areas or underexposure in dark areas. Therefore, it's often desirable to apply contrast adjustments in moderation, keeping the overall visual balance in mind.
+
+## Sepia
+
+The sepia effect is a popular image filter that gives photos a warm, nostalgic, and vintage look, reminiscent of old photographs. It transforms a color image into a monochrome image with a brownish tone.The sepia effect mimics the look of older photographs, which were often tinted with brownish hues due to the aging of the photo paper and chemical processes used in the past.
+
+## Viggneta 
+
+The vignette effect is a popular image filter that darkens or fades the edges of an image, creating a gradual transition towards the center. This effect draws attention to the central subject of the image and can create a more dramatic or vintage look. The vignette effect gradually darkens or fades the edges of the image, drawing the viewer's focus towards the center. This can help create a more focused and dramatic composition or add a vintage aesthetic to the image.
