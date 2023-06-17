@@ -9,13 +9,13 @@ let vineta;
 
 
 function preload(){
-  theShader = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blackwhite.frag');
-  cams = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/cam.frag');
-  blackwhite = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blackwhite.frag');
-  blur = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/blur.frag');
-  contraste = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/contraste.frag');
-  sepia = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/sepia.frag');
-  vineta = loadShader('showcase/sketches/shaders/cam.vert', 'showcase/sketches/shaders/vineta.frag');
+  theShader = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/blackwhite.frag');
+  cams = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/cam.frag');
+  blackwhite = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/blackwhite.frag');
+  blur = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/blur.frag');
+  contraste = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/contraste.frag');
+  sepia = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/sepia.frag');
+  vineta = loadShader('/showcase/sketches/shaders/cam.vert', '/showcase/sketches/shaders/vineta.frag');
 }
 
 function setup() {
