@@ -8,7 +8,6 @@
 | 3                | Hight contrast     |
 | 4                | Sepia Effect       |
 | 5                | Viggneta Effect    |
-
 {{< /details >}}
 {{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/post_effects.js" width="600" height="880" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
 Post-effect refers to any modifications or enhancements applied to an image after it has been captured or rendered. These effects are typically applied using image editing software or tools.
@@ -194,3 +193,13 @@ vignette effect to a texture by calculating the distance from each pixel to the 
 
 ## Live video with Post Effects
 {{<p5-iframe ver="1.4.2" sketch="/showcase/sketches/postvideo.js" width="500" height="480" marginHeight="0" marginWidth="0" frameBorder="0" scrolling="no">}}
+
+
+## Conclution
+Post-effects are an important aspect of computer graphics and image processing as they allow for the enhancement, modification, or stylization of rendered images or video footage after the primary rendering process. Post-effects play a crucial role in the final presentation and manipulation of rendered images or video, offering a range of possibilities to enhance visual quality, artistic expression, and optimization in computer graphics and image processing workflows.
+
+# References
+
+- "GLSL Cubic Lens Distortion". //game dev log of martins upitis. http://devlog-martinsh.blogspot.com/2011/10/glsl-cubic-lens-distortion.html.
+- "Pseudo Lens Flare". john-chapman-graphics. http://john-chapman-graphics.blogspot.com/2013/02/pseudo-lens-flare.html.
+- Contributors to Wikimedia projects. "Box blur - Wikipedia". Wikipedia, the free encyclopedia. https://en.wikipedia.org/wiki/Box_blur .
