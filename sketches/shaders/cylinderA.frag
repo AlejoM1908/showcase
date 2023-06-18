@@ -7,15 +7,15 @@
   uniform float u_yoff;
   
   void main() {
-    // Obténer las coordenadas de textura
+    // tex coord
     vec2 st = vTexCoord;
     
-    // Agregar el desplazamiento a las coordenadas de textura
+    // movement
     st += vec2(u_xoff, u_yoff);
     
-    // Calcular el patrón utilizando las coordenadas de textura
+    // pattern
     float pattern = step(fract(st.x * 8.0), 0.5) * step(fract(st.y * 8.0), 0.5);
     
-    // Establecer el color del fragmento en función del patrón
+    
     gl_FragColor = vec4(pattern, pattern, pattern, 1.0);
   }
