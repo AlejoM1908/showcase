@@ -2,7 +2,7 @@
 as we can see at The book of shaders we can create patterns and visualized it in a surface
 #ifdef GL_ES precision mediump float; #endif varying vec2 vTexCoord; uniform float u_xoff; uniform float u_yoff; void main() { // tex coord vec2 st = vTexCoord; // movement st += vec2(u_xoff, u_yoff); // pattern float pattern = step(fract(st."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Procedural texturing # Procedural texturing is a technique used in computer graphics to generate textures algorithmically, rather than relying on traditional image-based textures. It involves creating textures using mathematical functions, patterns, or algorithms to define the visual appearance of a surface.
 as we can see at The book of shaders we can create patterns and visualized it in a surface
-#ifdef GL_ES precision mediump float; #endif varying vec2 vTexCoord; uniform float u_xoff; uniform float u_yoff; void main() { // tex coord vec2 st = vTexCoord; // movement st += vec2(u_xoff, u_yoff); // pattern float pattern = step(fract(st."><meta property="og:type" content="article"><meta property="og:url" content="https://visualcomputing.github.io/showcase/docs/Second-Delivery/Procedural_texturing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-17T19:14:16-05:00"><title>Procedural Texturing | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+#ifdef GL_ES precision mediump float; #endif varying vec2 vTexCoord; uniform float u_xoff; uniform float u_yoff; void main() { // tex coord vec2 st = vTexCoord; // movement st += vec2(u_xoff, u_yoff); // pattern float pattern = step(fract(st."><meta property="og:type" content="article"><meta property="og:url" content="https://visualcomputing.github.io/showcase/docs/Second-Delivery/Procedural_texturing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-17T19:45:36-05:00"><title>Procedural Texturing | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
 <script defer src=/showcase/en.search.min.3a8d658c77eb93c7f12a2b8af49a700131e474f288eefb605d9fa61576dbe5a7.js integrity="sha256-Oo1ljHfrk8fxKiuK9JpwATHkdPKI7vtgXZ+mFXbb5ac=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-bffb37aabc511da64618cc3c63b579fa class=toggle>
 <label for=section-bffb37aabc511da64618cc3c63b579fa class="flex justify-between"><a role=button>About Us</a></label><ul><li><a href=/showcase/docs/About-Us/Alejandro_Melo/>Alejandro Melo</a></li><li><a href=/showcase/docs/About-Us/David_Cifuentes/>David Cifuentes</a></li></ul></li><li><input type=checkbox id=section-ab817738b5cb607b62ce212ca2d98366 class=toggle checked>
@@ -94,19 +94,53 @@ as we can see at The book of shaders we can create patterns and visualized it in
             <script>
               
 
-let pg; let truchetShader;
+let pg;
+let truchetShader;
 
-function preload() { // shader adapted from here: https://thebookofshaders.com/09/ truchetShader = readShader('/showcase/sketches/shaders/brick.frag'); }
+function preload() {
+  // shader adapted from here: https://thebookofshaders.com/09/
+  truchetShader = readShader('/showcase/sketches/shaders/brick.frag');
+}
 
-function setup() { createCanvas(400, 400, WEBGL); // create frame buffer object to render the procedural texture pg = createGraphics(400, 400, WEBGL); textureMode(NORMAL); noStroke(); pg.noStroke(); pg.textureMode(NORMAL); // use truchetShader to render onto pg pg.shader(truchetShader); // emitResolution, see: // https://github.com/VisualComputing/p5.treegl#macros pg.emitResolution(truchetShader); // https://p5js.org/reference/#/p5.Shader/setUniform truchetShader.setUniform('u_zoom', 3); // pg NDC quad (i.e., x, y and z vertex coordinates ∈ [-1..1]) pg.quad(-1, -1, 1, -1, 1, 1, -1, 1); // set pg as texture texture(pg); }
+function setup() {
+  createCanvas(400, 400, WEBGL);
+  // create frame buffer object to render the procedural texture
+  pg = createGraphics(400, 400, WEBGL);
+  textureMode(NORMAL);
+  noStroke();
+  pg.noStroke();
+  pg.textureMode(NORMAL);
+  // use truchetShader to render onto pg
+  pg.shader(truchetShader);
+  // emitResolution, see:
+  // https://github.com/VisualComputing/p5.treegl#macros
+  pg.emitResolution(truchetShader);
+  // https://p5js.org/reference/#/p5.Shader/setUniform
+  truchetShader.setUniform('u_zoom', 3);
+  // pg NDC quad (i.e., x, y and z vertex coordinates ∈ [-1..1])
+  pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
+  // set pg as texture
+  texture(pg);
+}
 
-function draw() { background(33); orbitControl(); cone(100, 200); }
+function draw() {
+  background(33);
+  orbitControl();
+  sphere(100, 200);
+}
 
-function mouseMoved() { // https://p5js.org/reference/#/p5.Shader/setUniform truchetShader.setUniform('u_zoom', int(map(mouseX, 0, width, 1, 30))); // pg NDC quad (i.e., x, y and z vertex coordinates ∈ [-1..1]) pg.quad(-1, -1, 1, -1, 1, 1, -1, 1); } 
+function mouseMoved() {
+  // https://p5js.org/reference/#/p5.Shader/setUniform
+  truchetShader.setUniform('u_zoom', int(map(mouseX, 0, width, 1, 30)));
+  // pg NDC quad (i.e., x, y and z vertex coordinates ∈ [-1..1])
+  pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
+}
+
+
             </script>
           </head>
           <body>
           </body>
         </html>
-      "></iframe></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://AlejoM1908.github.io/showcase/commit/70dc2c5ed6a59854dcfd44d47d73f6e8f5a76c17 title='Last modified by dcifuentesg | June 18, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+      "></iframe></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://AlejoM1908.github.io/showcase/commit/976ed458db4e9d88a2bfdde87efd79edbd2c7645 title='Last modified by dcifuentesg | June 18, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
 <span>June 18, 2023</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#procedural-texturing>Procedural texturing</a></li></ul></nav></div></aside></main></body></html>

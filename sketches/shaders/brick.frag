@@ -1,41 +1,50 @@
-let pg;
-let truchetShader;
+// Author @patriciogv ( patriciogonzalezvivo.com ) - 2015
 
-function preload() {
-  // shader adapted from here: https://thebookofshaders.com/09/
-  truchetShader = readShader('offset.frag');
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform vec2 u_resolution;
+uniform float u_time;
+uniform float u_zoom;
+
+vec2 brickTile(vec2 _st, float _zoom){
+    _st *= _zoom;
+
+    // Here is where the offset is happening
+    _st.x += step(1., mod(_st.y,2.0)) * 0.5;
+
+    return fract(_st);
 }
 
-function setup() {
-  createCanvas(400, 400, WEBGL);
-  // create frame buffer object to render the procedural texture
-  pg = createGraphics(400, 400, WEBGL);
-  textureMode(NORMAL);
-  noStroke();
-  pg.noStroke();
-  pg.textureMode(NORMAL);
-  // use truchetShader to render onto pg
-  pg.shader(truchetShader);
-  // emitResolution, see:
-  // https://github.com/VisualComputing/p5.treegl#macros
-  pg.emitResolution(truchetShader);
-  // https://p5js.org/reference/#/p5.Shader/setUniform
-  truchetShader.setUniform('u_zoom', 3);
-  // pg NDC quad (i.e., x, y and z vertex coordinates ∈ [-1..1])
-  pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
-  // set pg as texture
-  texture(pg);
+float box(vec2 _st, vec2 _size){
+    _size = vec2(0.5)-_size*0.5;
+    vec2 uv = smoothstep(_size,_size+vec2(1e-4),_st);
+    uv *= smoothstep(_size,_size+vec2(1e-4),vec2(1.0)-_st);
+    return uv.x*uv.y;
 }
 
-function draw() {
-  background(33);
-  orbitControl();
-  cone(100, 200);
+vec2 brick(vec2 _st, float _zoom) {
+    _st *= _zoom;
+    return fract(_st); 
 }
 
-function mouseMoved() {
-  // https://p5js.org/reference/#/p5.Shader/setUniform
-  truchetShader.setUniform('u_zoom', int(map(mouseX, 0, width, 1, 30)));
-  // pg NDC quad (i.e., x, y and z vertex coordinates ∈ [-1..1])
-  pg.quad(-1, -1, 1, -1, 1, 1, -1, 1);
+void main(void){
+    vec2 st = gl_FragCoord.xy/u_resolution.xy;
+    vec3 color = vec3(0.0);
+
+    // Modern metric brick of 215mm x 102.5mm x 65mm
+    // http://www.jaharrison.me.uk/Brickwork/Sizes.html
+    // st /= vec2(2.15,0.65)/1.5;
+
+    // Apply the brick tiling
+    st = brickTile(st,5.0);
+  
+    st = brick(st,u_zoom);
+    color = vec3(box(st,vec2(0.9)));
+
+    // Uncomment to see the space coordinates
+    // color = vec3(st,0.0);
+
+    gl_FragColor = vec4(color,1.0);
 }
