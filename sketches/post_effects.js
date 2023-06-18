@@ -66,8 +66,6 @@ function keyPressed() {
     theShader = sepia;
   }else if(key == '5'){
     theShader = vineta;
-  }else if(key == '6'){
-    theShader = cams;
   }
 }
 
