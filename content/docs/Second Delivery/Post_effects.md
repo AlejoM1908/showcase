@@ -196,7 +196,9 @@ vignette effect to a texture by calculating the distance from each pixel to the 
 
 
 ## Conclution
-Post-effects are an important aspect of computer graphics and image processing as they allow for the enhancement, modification, or stylization of rendered images or video footage after the primary rendering process. Post-effects play a crucial role in the final presentation and manipulation of rendered images or video, offering a range of possibilities to enhance visual quality, artistic expression, and optimization in computer graphics and image processing workflows.
+- Post-effects are an important aspect of computer graphics and image processing as they allow for the enhancement, modification, or stylization of rendered images or video footage after the primary rendering process. Post-effects play a crucial role in the final presentation and manipulation of rendered images or video, offering a range of possibilities to enhance visual quality, artistic expression, and optimization in computer graphics and image processing workflows.
+- Post effects allow artists and developers to manipulate the overall mood and atmosphere of a scene. By adjusting color, contrast, saturation, and other parameters, post effects can evoke different emotions and enhance the storytelling or thematic elements of a project. For example, desaturation and increased contrast can create a gritty and dark atmosphere, while soft lighting and warm colors can convey a sense of tranquility or nostalgia.
+- Post effects can also serve practical purposes in optimizing performance. Techniques such as anti-aliasing, screen space reflections, and level-of-detail adjustments can help balance visual quality with rendering performance. By selectively applying post effects to specific parts of the rendered image or reducing the complexity of certain effects, developers can achieve a good balance between visual fidelity and performance requirements.
 
 # References
 
