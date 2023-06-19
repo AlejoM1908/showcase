@@ -17,6 +17,11 @@ Kernel masking is a powerful technique used in various image processing tasks, s
 <img src="/showcase/assets/video/convolution_example.gif" alt="Convolution Example" style="height: 300px; width:600px; margin: 30px auto; display: block;"/>
 {{< /hint >}}
 
+## Shaders optimization for masking
+Shaders are programs that run on the GPU. They are used to perform calculations on the vertices and pixels of 3D objects. Shaders are written in a special language called GLSL (OpenGL Shading Language) and typically consist of two parts: a vertex shader and a fragment shader. The vertex shader is responsible for transforming the vertices of 3D objects into screen coordinates, while the fragment shader is responsible for calculating the color of each pixel in the image.
+
+Knowing this is clear for masking an image using shaders we need to create a vertex shader and a fragment shader, the vertex shader will be used to transform the vertices of the image into single pixels coordinates, and the fragment shader will be used to calculate the color of each pixel in the image and its neighbours, then apply the corresponding kernel to obtain the new color of the pixel.
+
 ## Histograms
 A histogram is a graph that shows the frequency of occurrence of each intensity value in the image. By analyzing the histogram of an image, we can gain insights into the image's characteristics, such as its brightness, contrast, and color balance. Histograms are widely used in various fields, such as photography, computer vision, and machine learning.
 
@@ -56,9 +61,10 @@ Another way to implement such technique is by using other colors modes, such as 
 ## Code Explanation
 
 ### Masking
-The program has a set of kernels and images that will be preloaded, those sets are gona be used to reset the image and to change the mask, so the image being modified is in another variable so it can be modified as much as wanted without affecting the original image, the kernels are 3x3 matrices that are used to modify the image, the kernel is applied to the image by multiplying each pixel of the image by the corresponding pixel of the kernel, the result of the multiplication is added to the rest of the results of the multiplication of the other pixels, and the result is assigned to the pixel that is being modified, this process is repeated for every pixel in the image, resulting in a new transformed image.
+The program has a set of kernels and images that will be preloaded, those sets are gona be used to reset the image and to change the mask, so the image being modified is in another variable so it can be modified as much as wanted without affecting the original image, the kernels are 5x5 matrices that are used to modify the image, the kernel is applied to the image by passing the image and kernel to a shader, the shader will apply the kernel to the image and return the completely modified 
 
-{{< details "Image convolution">}}
+{{< tabs "uniqueid" >}}
+{{< tab "old" >}}
 ```js
 function convolveImage(image) {
   for (let posX = 1; posX < image.width - 1; posX++) {
@@ -77,7 +83,90 @@ function convolveImage(image) {
   image.updatePixels();
 }
 ```
-{{< /details >}}
+{{< /tab >}}
+{{< tab "new" >}}
+```js
+function convolveImage(image) {
+  // Create an off-screen graphics buffer
+  let buffer = createGraphics(image.width, image.height, WEBGL);
+
+  // Set the shader on the buffer
+  buffer.shader(convolution_shader);
+
+  // Set the shader uniforms
+  convolution_shader.setUniform('tex0', image);
+  convolution_shader.setUniform('texSize', [image.width, image.height]);
+  convolution_shader.setUniform('kernel', masks[selected_mask]);
+
+  // Get the modified image as a p5.js image object
+  let modifiedImage = buffer.get();
+
+  // Reset the shader
+  buffer.resetShader();
+  buffer.remove();
+
+  // Return the modified image
+  return modifiedImage;
+}
+``` 
+{{< /tab >}}
+{{< /tabs >}}
+
+### Shaders
+Against the old version, the new one with shader ussage is much more simple as the main logic is executed by the GPU wich is much more efficient than the CPU in those kind of calculations, so for this task the challenge can be divided in two:
+
+- Get each pixel of the image to be modified (vertex shader)
+- Apply the given kernel to the pixel with its neighbors pixels information (fragment shader)
+
+For this the two GLSL code was developed as follow:
+
+{{< tabs "uniqueid" >}}
+{{< tab "vertex" >}}
+```glsl
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+attribute vec3 aPosition;
+attribute vec2 aTexCoord;
+
+varying vec2 vTexCoord;
+
+void main() {
+  vTexCoord = aTexCoord;
+  gl_Position = vec4(aPosition, 1.0);
+}
+```
+{{< /tab >}}
+{{< tab "fragment" >}}
+```glsl
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform sampler2D tex0;
+uniform vec2 texSize;
+uniform float kernel[25];
+
+void main() {
+  vec2 st = gl_FragCoord.xy / texSize;
+  vec4 sum = vec4(0.0);
+
+  // Apply the kernel by sampling surrounding pixels
+  for (int i = -2; i <= 2; i++) {
+    for (int j = -2; j <= 2; j++) {
+      vec2 offset = vec2(float(i), float(j)) / texSize;
+      sum += texture2D(tex0, st + offset) * kernel[(j + 2) * 5 + (i + 2)];
+    }
+  }
+
+  gl_FragColor = sum;
+}
+```
+{{< /tab >}}
+{{< /tabs >}}
+
+Analyzing the code more in detail we can see that the vertex shader takes the complete image and generate a texture coordinate for each pixel, this texture coordinate is used by the fragment shader to get the pixel color of the image, the fragment shader also takes the kernel and the size of the image, with this information the fragment shader can apply the kernel to the pixel and return the modified pixel color.
 
 ### Histogram
 The histogram is a graph that shows the frequency of occurrence of each intensity value in the image, the histogram is calculated by counting the number of pixels in an image that have a particular intensity value, the horizontal axis of the histogram represents the intensity values, and the vertical axis represents the number of pixels with that intensity value, the histogram is calculated by counting the number of pixels in an image that have a particular intensity value, the horizontal axis of the histogram represents the intensity values, and the vertical axis represents the number of pixels with that intensity value.

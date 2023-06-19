@@ -1,14 +1,59 @@
 // Defining the kernels to apply to the set of images
 let masks = [
-  ['Original', [0, 0, 0, 0, 1, 0, 0, 0, 0]],
-  ['Desenfoque Gausiano', [1 / 16, 1 / 8, 1 / 16, 1 / 8, 1 / 4, 1 / 8, 1 / 16, 1 / 8, 1 / 16]],
-  ['Detección de bordes', [-1, -1, -1, -1, 8, -1, -1, -1, -1]],
-  ['Desenfoque de caja', [1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9]],
-  ['Detección horizontal', [-3, 0, 3, -10, 0, 10, -3, 0, 3]],
-  ['Agudeza', [0, -1, 0, -1, 5, -1, 0, -1, 0]],
-  ['Detección vertical', [-3, -10, -3, 0, 0, 0, 3, 10, 3]],
-  ['Operador de Sobel', [-1, -2, -1, 0, 0, 0, 1, 2, 1]],
-  //['Personalizado', [0, 0, 0, 0, 1, 0, 0, 0, 0]]
+  ['Original', [
+    0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 
+    0, 0, 1, 0, 0, 
+    0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0]],
+  ['Desenfoque Gausiano', [
+    0, 0, 0, 0, 0, 
+    0, 1 / 16, 1 / 8, 1 / 16, 0, 
+    0, 1 / 8, 1 / 4, 1 / 8, 0, 
+    0, 1 / 16, 1 / 8, 1 / 16, 0, 
+    0, 0, 0, 0, 0]],
+  ['Detección de bordes', [
+    0, 0, 0, 0, 0, 
+    0, -1, -1, -1, 0, 
+    0, -1, 8, -1, 0, 
+    0, -1, -1, -1, 0, 
+    0, 0, 0, 0, 0]],
+  ['Desenfoque de caja', [
+    0, 0, 0, 0, 0, 
+    0, 1 / 9, 1 / 9, 1 / 9, 0, 
+    0, 1 / 9, 1 / 9, 1 / 9, 0, 
+    0, 1 / 9, 1 / 9, 1 / 9, 0, 
+    0, 0, 0, 0, 0]],
+  ['Detección horizontal', [
+    0, 0, 0, 0, 0, 
+    0, -3, 0, 3, 0, 
+    0, -10, 0, 10, 0, 
+    0, -3, 0, 3, 0, 
+    0, 0, 0, 0, 0]],
+  ['Agudeza', [
+    0, 0, 0, 0, 0, 
+    0, 0, -1, 0, 0, 
+    0, -1, 5, -1, 0, 
+    0, 0, -1, 0, 0, 
+    0, 0, 0, 0, 0]],
+  ['Detección vertical', [
+    0, 0, 0, 0, 0, 
+    0, -3, -10, -3, 0, 
+    0, 0, 0, 0, 0, 
+    0, 3, 10, 3, 0, 
+    0, 0, 0, 0, 0]],
+  ['Operador de Sobel', [
+    0, 0, 0, 0, 0, 
+    0, -1, -2, -1, 0, 
+    0, 0, 0, 0, 0, 
+    0, 1, 2, 1, 0, 
+    0, 0, 0, 0, 0]]
+  //['Personalizado', [
+  //  0, 0, 0, 0, 0,
+  //  0, 0, 0, 0, 0,
+  //  0, 0, 1, 0, 0,
+  //  0, 0, 0, 0, 0,
+  //  0, 0, 0, 0, 0]]
 ];
 
 // Adding an array of images so new ones can be added in excecution time
@@ -19,6 +64,7 @@ const ORIGINAL_IMAGES = [
   '/showcase/assets/image/rain.jpeg',
   '/showcase/assets/image/sword.jpeg',
 ];
+let convolution_shader;
 let loaded_images = [];
 let current_image;
 
@@ -53,6 +99,8 @@ function preload() {
     // Load each image path, resize it to a square of the CANVAS_SIZE and add it to the loaded_images array
     loaded_images.push(loadImage(ORIGINAL_IMAGES[i]));
   }
+
+  noLoop();
 }
 
 /**
@@ -86,6 +134,9 @@ function setup() {
   resetImage();
 
   mask_title = local_mode ? masks[selected_mask][0] + ' - local': masks[selected_mask][0] + ' - global';
+  
+  // Load the convolution shader
+  convolution_shader = loadShader('/showcase/assets/shader/masking.vert', '/showcase/assets/shader/masking.frag');
 }
 
 /**
@@ -157,7 +208,7 @@ function displayName(title, canvas) {
   canvas.textSize(20);
   let text_width = canvas.textWidth(title) + 10;
 
-  // Translate the figure to the top middle of the canvas
+  // Translate the figure to the top middle of the canvas with normalized coordinates
   canvas.translate(canvas.width / 2 - text_width / 2, 30);
 
   // Draw the box
@@ -306,7 +357,7 @@ function getPixel(pixelX, pixelY) {
  * Used to apply a mask globally to the current image
 */
 function applyGlobalMask() {
-  if (selected_mask > 0) convolveImage(current_image);
+  if (selected_mask > 0) current_image = convolveImage(current_image);
 }
 
 /**
@@ -324,56 +375,38 @@ function applyLocalMask() {
   small_image.copy(current_image, posX, posY, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE, 0, 0, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE);
   small_image.loadPixels();
 
-  convolveImage(small_image);
+  small_image = convolveImage(small_image);
 
   current_image.copy(small_image, 0, 0, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE, posX, posY, LOCAL_ZONE_SIZE, LOCAL_ZONE_SIZE);
 }
 
 /**
- * Used to apply a convolution mask to an image
- * @param {object} image - The image to which the convolution mask is applied
- * @param {number} pixelX - The column where the pixel is located
- * @param {number} pixelY - The row where the pixel is located
-*/
-function getConvolution(image, pixelX, pixelY) {
-  let r = 0.0;
-  let g = 0.0;
-  let b = 0.0;
-
-  for (let i = 0; i < 9; i++) {
-      let location = (pixelX + floor(i / 3) + image.width * (pixelY + i % 3)) * 4;
-
-      r += image.pixels[location] * masks[selected_mask][1][i];
-      g += image.pixels[location + 1] * masks[selected_mask][1][i];
-      b += image.pixels[location + 2] * masks[selected_mask][1][i];
-  }
-
-  return {
-      r: constrain(r, 0, 255),
-      g: constrain(g, 0, 255),
-      b: constrain(b, 0, 255),
-  };
-}
-
-/**
- * Used to apply a convolution mask to an image
- * @param {object} image - The image to which the convolution mask is applied
+ * Used to apply a mask to the current image
+ * The mask will be applied to the whole given image using a convolution shader
+ * @param {object} image - The image to be convolved
+ * @returns {object} - The convolved image
 */
 function convolveImage(image) {
-  for (let posX = 1; posX < image.width - 1; posX++) {
-      for (let posY = 1; posY < image.height - 1; posY++) {
-          let operatedPixel = getConvolution(image, posX, posY);
-          let position = (posX + posY * image.width) * 4;
+  // Create an off-screen graphics buffer
+  let buffer = createGraphics(image.width, image.height, WEBGL);
 
-          image.pixels[position] = operatedPixel.r;
-          image.pixels[position + 1] = operatedPixel.g;
-          image.pixels[position + 2] = operatedPixel.b;
-          image.pixels[position + 3] = 255;
-      }
-  }
+  // Set the shader on the buffer
+  buffer.shader(convolution_shader);
 
-  stroke(300, 100, 80);
-  image.updatePixels();
+  // Set the shader uniforms
+  convolution_shader.setUniform('tex0', image);
+  convolution_shader.setUniform('texSize', [image.width, image.height]);
+  convolution_shader.setUniform('kernel', masks[selected_mask]);
+
+  // Get the modified image as a p5.js image object
+  let modifiedImage = buffer.get();
+
+  // Reset the shader
+  buffer.resetShader();
+  buffer.remove();
+
+  // Return the modified image
+  return modifiedImage;
 }
 
 /**
@@ -527,4 +560,6 @@ function keyPressed() {
       clearMask();
       break;
   }
+
+  redraw();
 }
