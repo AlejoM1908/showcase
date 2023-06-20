@@ -1,14 +1,59 @@
 // Defining the kernels to apply to the set of images
 let masks = [
-  ['Original', [0, 0, 0, 0, 1, 0, 0, 0, 0]],
-  ['Desenfoque Gausiano', [1 / 16, 1 / 8, 1 / 16, 1 / 8, 1 / 4, 1 / 8, 1 / 16, 1 / 8, 1 / 16]],
-  ['Detección de bordes', [-1, -1, -1, -1, 8, -1, -1, -1, -1]],
-  ['Desenfoque de caja', [1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9, 1 / 9]],
-  ['Detección horizontal', [-3, 0, 3, -10, 0, 10, -3, 0, 3]],
-  ['Agudeza', [0, -1, 0, -1, 5, -1, 0, -1, 0]],
-  ['Detección vertical', [-3, -10, -3, 0, 0, 0, 3, 10, 3]],
-  ['Operador de Sobel', [-1, -2, -1, 0, 0, 0, 1, 2, 1]],
-  //['Personalizado', [0, 0, 0, 0, 1, 0, 0, 0, 0]]
+  ['Original', [
+    0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 
+    0, 0, 1, 0, 0, 
+    0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0]],
+  ['Desenfoque Gausiano', [
+    0, 0, 0, 0, 0, 
+    0, 1 / 16, 1 / 8, 1 / 16, 0, 
+    0, 1 / 8, 1 / 4, 1 / 8, 0, 
+    0, 1 / 16, 1 / 8, 1 / 16, 0, 
+    0, 0, 0, 0, 0]],
+  ['Detección de bordes', [
+    0, 0, 0, 0, 0, 
+    0, -1, -1, -1, 0, 
+    0, -1, 8, -1, 0, 
+    0, -1, -1, -1, 0, 
+    0, 0, 0, 0, 0]],
+  ['Desenfoque de caja', [
+    0, 0, 0, 0, 0, 
+    0, 1 / 9, 1 / 9, 1 / 9, 0, 
+    0, 1 / 9, 1 / 9, 1 / 9, 0, 
+    0, 1 / 9, 1 / 9, 1 / 9, 0, 
+    0, 0, 0, 0, 0]],
+  ['Detección horizontal', [
+    0, 0, 0, 0, 0, 
+    0, -3, 0, 3, 0, 
+    0, -10, 0, 10, 0, 
+    0, -3, 0, 3, 0, 
+    0, 0, 0, 0, 0]],
+  ['Agudeza', [
+    0, 0, 0, 0, 0, 
+    0, 0, -1, 0, 0, 
+    0, -1, 5, -1, 0, 
+    0, 0, -1, 0, 0, 
+    0, 0, 0, 0, 0]],
+  ['Detección vertical', [
+    0, 0, 0, 0, 0, 
+    0, -3, -10, -3, 0, 
+    0, 0, 0, 0, 0, 
+    0, 3, 10, 3, 0, 
+    0, 0, 0, 0, 0]],
+  ['Operador de Sobel', [
+    0, 0, 0, 0, 0, 
+    0, -1, -2, -1, 0, 
+    0, 0, 0, 0, 0, 
+    0, 1, 2, 1, 0, 
+    0, 0, 0, 0, 0]]
+  //['Personalizado', [
+  //  0, 0, 0, 0, 0,
+  //  0, 0, 0, 0, 0,
+  //  0, 0, 1, 0, 0,
+  //  0, 0, 0, 0, 0,
+  //  0, 0, 0, 0, 0]]
 ];
 
 // Adding an array of images so new ones can be added in excecution time
@@ -340,8 +385,8 @@ function getConvolution(image, pixelX, pixelY) {
   let g = 0.0;
   let b = 0.0;
 
-  for (let i = 0; i < 9; i++) {
-      let location = (pixelX + floor(i / 3) + image.width * (pixelY + i % 3)) * 4;
+  for (let i = 0; i < 25; i++) {
+      let location = (pixelX + floor(i / 5) + image.width * (pixelY + i % 5)) * 4;
 
       r += image.pixels[location] * masks[selected_mask][1][i];
       g += image.pixels[location + 1] * masks[selected_mask][1][i];
