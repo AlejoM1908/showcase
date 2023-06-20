@@ -114,3 +114,8 @@ function generateRandomMovement() {
 ```
 {{< /tab >}}
 {{< /tabs >}}
+
+## References
+
+- [Barney Codes](https://www.youtube.com/watch?v=r5YkU5Xu4_E&pp=ygUScDVqcyBzaGFkZXIgZ2xpdGNo) => main idea
+- [Chat GPT](https://chat.openia.com/) => text generation and logic explanation

@@ -184,3 +184,9 @@ function updateParticles() {
 ```
 {{< /tab >}}
 {{< /tabs >}}
+
+## References
+
+- [Chris Courses](https://youtu.be/na7LuZsW2UM) => Video inspiration and idea
+- [Khan Academy](https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-noise/a/perlin-noise) => undestanding Perlin Noise
+- [Chat GPT](https://chat.openai.com/) => text generation and logic explanation
